@@ -1,0 +1,25 @@
+Browser validation — 2026-09-11 UTC, Chromium via Playwright
+
+Automated/domain:
+- node tests/logic.test.mjs -> PASS
+- node --check app.mjs / logic.mjs / data.mjs -> PASS
+
+360 × 800 CSS px end-to-end:
+- No horizontal overflow at start/end.
+- Graph zoom changed from 68–80 to 0–80 while the underlying rows stayed exactly 72,74,73,76 and stats stayed min 72, max 76, mean 73.75.
+- Graph feedback correctly stated that scale/spacing changed while values/order/range/mean did not.
+- Biased North-only sample n=20: North 20, South 0, mean 4.20 vs population 3.50.
+- Increasing the same biased procedure to n=80: North 80, South 0, mean still 4.20; the bias therefore remained.
+- Stratified sample n=40: North 20, South 20, mean 3.50.
+- Correlation filter: all days r=0.95; cool r=0.41; warm r=0.43.
+- A causal answer returned a counter-explanation; the cautious association answer explicitly stated that association alone does not establish cause and named temperature as a plausible common influence.
+- Final headline check accepted only the cautious claim + numeric observation + limitation combination.
+- Finish reached Done.
+
+Responsive screenshots:
+1. 360 × 800 Graph framing — no horizontal overflow.
+2. 768 × 900 Sampling, n=80 biased — no horizontal overflow.
+3. 1280 × 900 Correlation + final claim — no horizontal overflow.
+Final browser console check: 0 errors, 0 warnings.
+
+Reduced-motion CSS is present; this browser session did not emulate an OS-level reduced-motion preference. No testing with children was conducted.
